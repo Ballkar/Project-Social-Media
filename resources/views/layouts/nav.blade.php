@@ -3,8 +3,8 @@
         <h5 class="my-0 mr-md-auto font-weight-normal">Project Social-Media</h5>
 
         <div class="btn-group">
-            <a class="btn btn-outline-primary " href="logowanie">Zaloguj się</a>
-            <a class="btn btn-outline-primary" href="rejestracja">Rejestracja</a>
+            <a class="btn btn-outline-primary" href="/login">Zaloguj się</a>
+            <a class="btn btn-outline-primary" href="/register">Rejestracja</a>
         </div>
     </div>
 @else

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="/rejestracja" method="post">
+    <form action="/register" method="post">
         {{csrf_field()}}
 
         <div class="col-6">

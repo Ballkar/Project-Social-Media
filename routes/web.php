@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', 'GuestController@index');
+Route::get('/', 'GuestController@index')->name('home');
 
 
 Route::get('/table', 'TableController@index');
 
-Route::get('/rejestracja', 'AccountController@create');
-Route::post('/rejestracja', 'AccountController@store');
+Route::get('/register', 'AccountController@create');
+Route::post('/register', 'AccountController@store');
 
-Route::get('/login', 'SessionController@create');
+Route::get('/login', 'SessionController@create')->name('login');
+Route::post('/login', 'SessionController@store');
 Route::get('/logout', 'SessionController@destroy');
