@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('glowna.index');
-});
+Route::get('/', 'GuestController@index');
+
+
+Route::get('/table', 'TableController@index');

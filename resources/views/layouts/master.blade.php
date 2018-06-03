@@ -23,17 +23,7 @@
 
 <div class="container-fluid">
 
-    <div class="row min-size">
-
-        <div class="col-10 m-0 border-right">
-            @yield('content')
-        </div>
-        <div class="col-2 m-0  h-scroll">
-            @include('layouts.sidebar')
-        </div>
-
-
-    </div>
+    @include('layouts.container')
     @include('layouts.footer')
 </div>
 
