@@ -22,7 +22,6 @@
 
 
 <div class="container-fluid">
-
     @include('layouts.container')
     @include('layouts.footer')
 </div>
