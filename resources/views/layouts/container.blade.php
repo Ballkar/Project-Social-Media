@@ -14,12 +14,16 @@
 
 @else
     <div class="row min-size">
-        <div class="col-10 m-0 border-right">
+        <div class="col-2 m-0">
+            @yield('contentL')
+        </div>
+
+        <div class="col-8 m-0 p-0 border-right border-left">
             @yield('content')
         </div>
-        <div class="col-2 m-0  h-scroll">
 
-            @include('layouts.sidebar.sidebar')
+        <div class="col-2 m-0  h-scroll">
+            @yield('contentR')
         </div>
     </div>
 

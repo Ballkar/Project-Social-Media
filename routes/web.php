@@ -16,9 +16,21 @@ Route::get('/', 'GuestController@index')->name('home');
 
 Route::get('/table', 'TableController@index');
 
+
+
 Route::get('/register', 'AccountController@create');
+
 Route::post('/register', 'AccountController@store');
 
+Route::get('/profile/{user}', 'AccountController@show');
+
+Route::get('/profile/{user}/edit', 'AccountController@edit');
+
+
+
+
 Route::get('/login', 'SessionController@create')->name('login');
+
 Route::post('/login', 'SessionController@store');
+
 Route::get('/logout', 'SessionController@destroy');

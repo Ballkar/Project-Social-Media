@@ -2,39 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except('destroy');
+        $this->middleware('auth')->except(['create', 'store']);
+        $this->middleware('data')->except(['create', 'store', 'edit']);
     }
+
 
     public function create()
     {
         return view('account.create');
     }
 
+
     public function store()
     {
         $this->validate(request(), [
-            'name' => 'min:3',
-            'surname' => 'min:3',
             'email' => 'email|min:4|unique:users',
             'password' => 'min:4|confirmed'
-        ],
-            [
-                'min' => ':attribute musi posiadać przynajmniej 3 znaki',
-                'confirmed'=>'Podane hasła nie pasują',
-                'email'=>'Podano nie prawidłowy format Email',
-                'unique'=>'Podany Email jest już w Bazie'
-            ]);
+        ]);
 
         $user = User::create([
-            'name' => request('name'),
-            'surname' => request('surname'),
             'email' => request('email'),
             'password' => bcrypt(request('password'))
         ]);
@@ -42,6 +37,23 @@ class AccountController extends Controller
         auth()->login($user);
 
 
-        return redirect('/table');
+        return redirect('/profile/' . $user->id . '/edit');
+    }
+
+
+    public function show(User $user)
+    {
+
+        return view('account.show', compact('user'));
+    }
+
+
+    public function edit(User $user)
+    {
+        if ($user->id != auth()->id()) {
+            return redirect('/profile/' . auth()->id() . "/edit");
+        }
+
+        return view('account.edit', compact('user'));
     }
 }

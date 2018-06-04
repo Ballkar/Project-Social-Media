@@ -27,7 +27,7 @@ return [
         'array' => ':attribute musi składać się z :min - :max elementów.',
     ],
     'boolean' => ':attribute musi mieć wartość prawda albo fałsz',
-    'confirmed' => 'Potwierdzenie nie zgadza się.',
+    'confirmed' => 'Potwierdzenie :attribute nie zgadza się.',
     'date' => ':attribute nie jest prawidłową datą.',
     'date_format' => ':attribute nie jest w formacie :format.',
     'different' => ':attribute oraz :other muszą się różnić.',

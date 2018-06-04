@@ -28,8 +28,8 @@ class User extends Authenticatable
     ];
 
 
-    public function createNew()
+    public function data()
     {
-        echo 'dupa';
+        return $this->hasOne(UserData::class);
     }
 }

@@ -9,6 +9,7 @@ class TableController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('data');
     }
 
     public function index(){
