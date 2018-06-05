@@ -18,8 +18,8 @@ class CreateUserDatasTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->string('surname');
-            $table->date('birthday');
-            $table->string('home');
+            $table->date('birthday')->nullable();
+            $table->string('home')->nullable();
             $table->timestamps();
         });
     }
