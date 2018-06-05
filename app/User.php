@@ -37,4 +37,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public static function AddUserAndLog($request)
+    {
+        $user = User::create([
+            'email' => $request['email'],
+            'password' => bcrypt($request['password'])
+        ]);
+
+        UserData::create([
+            'user_id'=>$user->id,
+            'name'=>$request['name'],
+            'surname'=>$request['surname']
+        ]);
+
+        auth()->login($user);
+    }
 }

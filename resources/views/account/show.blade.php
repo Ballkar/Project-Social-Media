@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('layouts.part.UserAvatar')
+    @include('layouts.part.ShowUser')
 
         <div class="col-12 pt-2">
             <form class="form-inline" action='/profile/{{auth()->id()}}/edit' method="post">

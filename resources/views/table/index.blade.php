@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    @include('layouts.part.UserAvatar')
     <div class="col-12 pt-2">
 
 
