@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Faker\Provider\Image;
-use Illuminate\Http\Request;
+use App\UserData;
 use App\User;
-use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except(['create', 'store']);
-        $this->middleware('data')->except(['create', 'store', 'edit']);
+        $this->middleware('data')->except(['create', 'store', 'edit','update']);
     }
 
 
@@ -25,6 +23,8 @@ class AccountController extends Controller
     public function store()
     {
         $this->validate(request(), [
+            "name"=>"min:3",
+            "surname"=>"min:3",
             'email' => 'email|min:4|unique:users',
             'password' => 'min:4|confirmed'
         ]);
@@ -32,6 +32,12 @@ class AccountController extends Controller
         $user = User::create([
             'email' => request('email'),
             'password' => bcrypt(request('password'))
+        ]);
+
+        UserData::create([
+            'user_id'=>$user->id,
+            'name'=>request('name'),
+            'surname'=>request('surname'),
         ]);
 
         auth()->login($user);
@@ -53,6 +59,27 @@ class AccountController extends Controller
         if ($user->id != auth()->id()) {
             return redirect('/profile/' . auth()->id() . "/edit");
         }
+
+        return view('account.edit', compact('user'));
+    }
+    public function update(User $user)
+    {
+
+        if ($user->id != auth()->id()) {
+            return redirect('/profile/' . auth()->id() . "/edit");
+        }
+
+        $this->validate(request(),[
+            "name"=>"min:3",
+            "surname"=>"min:3",
+            "birthday"=>"date",
+        ]);
+
+        UserData::create([
+            'user_id'=>$user->id,
+            'name'=>''
+        ]);
+
 
         return view('account.edit', compact('user'));
     }

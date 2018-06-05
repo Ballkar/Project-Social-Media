@@ -6,7 +6,7 @@
 
         <div class="col-4 m-0 border-left">
 
-            @include('layouts.sidebar.sidebarGuest')
+            @include('layouts.errors')
         </div>
     </div>
 

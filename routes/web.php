@@ -26,6 +26,8 @@ Route::get('/profile/{user}', 'AccountController@show');
 
 Route::get('/profile/{user}/edit', 'AccountController@edit');
 
+Route::post('/profile/{user}/edit', 'AccountController@update');
+
 
 
 

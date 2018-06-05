@@ -22,6 +22,16 @@
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
             </div>
 
+            <div class="form-group ">
+                <label for="name">Imie:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+
+
+            <div class="form-group ">
+                <label for="surname">Nazwisko:</label>
+                <input type="text" class="form-control" id="surname" name="surname">
+            </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Załóż Konto</button>
