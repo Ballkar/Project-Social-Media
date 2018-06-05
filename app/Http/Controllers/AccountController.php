@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\UserData;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
@@ -49,7 +50,6 @@ class AccountController extends Controller
 
     public function show(User $user)
     {
-
         return view('account.show', compact('user'));
     }
 

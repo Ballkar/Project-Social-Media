@@ -30,5 +30,10 @@ html {
 .h-scroll {
     position: fixed;
     right: 0;
-
+}
+.avatarSmall{
+    height: 20px;
+}
+.avatar{
+    height: 40px;
 }

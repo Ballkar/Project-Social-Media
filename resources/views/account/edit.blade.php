@@ -32,5 +32,5 @@
 @endsection
 
 @section('contentL')
-    @include('layouts.errors')
+    @include('layouts.part.errors')
 @endsection

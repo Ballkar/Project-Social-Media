@@ -1,0 +1,1 @@
+<img src="{{asset('storage/images.jpg')}}" class="rounded-circle avatarSmall img-fluid">

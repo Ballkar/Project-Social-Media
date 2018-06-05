@@ -6,7 +6,7 @@
 
         <div class="col-4 m-0 border-left">
 
-            @include('layouts.errors')
+            @include('layouts.part.errors')
         </div>
     </div>
 
