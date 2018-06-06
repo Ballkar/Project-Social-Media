@@ -58,12 +58,13 @@ class AccountController extends Controller
             return redirect('/profile/' . auth()->id() . "/edit");
         }
 
-
         $this->validate(request(), [
-            "name" => "min:3",
-            "surname" => "min:3",
-            "birthday" => "date",
+            "adres"=>"sometimes|nullable|alpha_num",
+            "birthday" => "sometimes|nullable|date",
         ]);
+
+        
+        $user->data->edit(request()->all());
 
 
         return view('account.edit', compact('user'));

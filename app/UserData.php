@@ -12,4 +12,17 @@ class UserData extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+
+    public function edit($request)
+    {
+        foreach ($request as $key=>$value){
+            if ($key!='_token' && is_null($value) == 0){
+
+                $this->update([
+                    $key => $value
+                ]);
+            }
+        }
+    }
 }

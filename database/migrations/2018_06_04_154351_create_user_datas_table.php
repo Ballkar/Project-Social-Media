@@ -19,7 +19,7 @@ class CreateUserDatasTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->date('birthday')->nullable();
-            $table->string('home')->nullable();
+            $table->string('adres')->nullable();
             $table->timestamps();
         });
     }
