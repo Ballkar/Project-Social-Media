@@ -60,11 +60,11 @@ class AccountController extends Controller
 
         $this->validate(request(), [
             "adres"=>"sometimes|nullable|alpha_num",
-            "birthday" => "sometimes|nullable|date",
+            "birthday" => "sometimes|nullable|date"
         ]);
 
-        
-        $user->data->edit(request()->all());
+
+        $user->data->edit(request()->except(['__token']));
 
 
         return view('account.edit', compact('user'));

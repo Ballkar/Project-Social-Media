@@ -38,6 +38,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function gallery()
+    {
+        return $this->hasOne(Gallery::class);
+    }
+
     public static function AddUserAndLog($request)
     {
         $user = User::create([
@@ -46,9 +51,13 @@ class User extends Authenticatable
         ]);
 
         UserData::create([
-            'user_id'=>$user->id,
-            'name'=>$request['name'],
-            'surname'=>$request['surname']
+            'user_id' => $user->id,
+            'name' => $request['name'],
+            'surname' => $request['surname']
+        ]);
+
+        Gallery::create([
+            'user_id' => $user->id
         ]);
 
         auth()->login($user);

@@ -6,7 +6,10 @@
         @include('layouts.part.ShowUser')
 
         @if($user->id == auth()->user()->id)
-            <a href="/profile/{{$user->id}}/edit" class="btn-primary btn h-25 ml-auto">Edytuj Profil</a>
+            <div class="btn-group h-25 ml-auto">
+                <a href="/profile/{{$user->id}}/edit" class="btn-primary btn mr-1">Edytuj Profil</a>
+                <a href="/gallery/{{$user->id}}/edit" class="btn-primary btn">Dodaj zdjecie</a>
+            </div>
         @endif
     </div>
 

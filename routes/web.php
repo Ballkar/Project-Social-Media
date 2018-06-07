@@ -30,6 +30,14 @@ Route::post('/profile/{user}/edit', 'AccountController@update');
 
 
 
+Route::get('/gallery/{user}', 'GalleryController@show');
+
+Route::get('/gallery/{user}/edit', 'GalleryController@edit');
+
+Route::post('/gallery/{user}/edit', 'GalleryController@update');
+
+
+
 
 Route::get('/login', 'SessionController@create')->name('login');
 

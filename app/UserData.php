@@ -17,7 +17,7 @@ class UserData extends Model
     public function edit($request)
     {
         foreach ($request as $key=>$value){
-            if ($key!='_token' && is_null($value) == 0){
+            if (is_null($value) == 0){
 
                 $this->update([
                     $key => $value
