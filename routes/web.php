@@ -16,6 +16,8 @@ Route::get('/', 'GuestController@index')->name('home');
 
 Route::get('/table', 'TableController@index');
 
+Route::post('/table/{user}', 'TableController@store');
+
 
 
 Route::get('/register', 'AccountController@create');

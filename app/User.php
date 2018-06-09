@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -42,8 +43,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Gallery::class);
     }
+    public function table()
+    {
+        return $this->hasOne(Table::class);
+    }
 
-    public static function AddUserAndLog($request)
+    public static function AddUserAndLog(Request $request)
     {
         $user = User::create([
             'email' => $request['email'],
@@ -58,6 +63,10 @@ class User extends Authenticatable
 
         Gallery::create([
             'user_id' => $user->id
+        ]);
+
+        Table::create([
+            'user_id'=> $user->id
         ]);
 
         auth()->login($user);

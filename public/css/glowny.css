@@ -37,3 +37,9 @@ html {
 .avatar{
     height: 40px;
 }
+.photo{
+    height: 90px;
+}
+.post{
+    min-height: 150px;
+}

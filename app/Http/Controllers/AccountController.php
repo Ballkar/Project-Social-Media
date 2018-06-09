@@ -29,7 +29,7 @@ class AccountController extends Controller
             'password' => 'min:4|confirmed'
         ]);
 
-        User::AddUserAndLog(request()->all());
+        User::AddUserAndLog(request());
 
 
         return redirect('/profile/' . auth()->user()->id . '/edit');
