@@ -1,4 +1,4 @@
-@foreach($user->table->post as $post)
+@foreach($posts as $post)
     <div class="row my-4 mx-1 bg-light post">
         <div class="col-12 p-3 ">
             <div class="row m-0 p-0">

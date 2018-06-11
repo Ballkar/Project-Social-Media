@@ -23,6 +23,6 @@ class TableController extends Controller
         ]);
         Table::AddPost(request());
 
-        return redirect('/table');
+        return back();
     }
 }

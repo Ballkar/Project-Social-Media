@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\UserData;
 use App\User;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +39,11 @@ class AccountController extends Controller
 
     public function show(User $user)
     {
-        return view('account.show', compact('user'));
+        $posts = Post::latest()
+        ->where('table_id',$user->table->id)
+        ->get();
+
+        return view('account.show', compact('user','posts'));
     }
 
 

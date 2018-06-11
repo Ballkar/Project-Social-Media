@@ -9,13 +9,15 @@
         </div>
         @if($user->id == auth()->user()->id)
             <div class="h-25 ml-auto">
-                <a href="/gallery/{{$user->id}}/edit" class="btn-primary btn">Dodaj zdjęcie</a>
+                <a href="/photo/create" class="btn-primary btn">Dodaj zdjęcie</a>
             </div>
         @endif
     </div>
 
-    @foreach($user->gallery->photos as $photo)
-        <img src="{{asset($photo->path)}}" class="photo m-2">
+    @foreach($photos as $photo)
+        <a href="/photo/{{$photo->id}}">
+            <img src="{{asset($photo->path)}}" class="photo m-2">
+        </a>
     @endforeach
 
 @endsection

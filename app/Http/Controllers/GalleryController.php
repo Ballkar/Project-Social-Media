@@ -3,36 +3,25 @@
 namespace App\Http\Controllers;
 
 
+use App\Photo;
 use App\User;
 
 
 class GalleryController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function show(User $user)
     {
-        return view('gallery.show', compact('user'));
+        $photos = Photo::latest()
+            ->where('gallery_id',$user->gallery->id)
+            ->get();
+
+        return view('gallery.show', compact('user','photos'));
     }
 
-    public function edit(User $user)
-    {
-        return view('gallery.edit', compact('user'));
-    }
-
-    public function update(User $user)
-    {
-        if ($user->id != auth()->id()) {
-
-            return redirect('/gallery/' . auth()->id() . "/edit");
-        }
-
-        $this->validate(request(), [
-            "photo" => "image"
-        ]);
-
-        $user->gallery->AddPhoto(request());
-
-        return redirect('/gallery/' . $user->id . "");
-    }
 }
