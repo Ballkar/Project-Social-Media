@@ -1,0 +1,1 @@
+<img src="{{asset(auth()->user()->gallery->avatar)}}" class="rounded-circle avatarSmall img-fluid">

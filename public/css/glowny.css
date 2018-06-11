@@ -30,5 +30,19 @@ html {
 .h-scroll {
     position: fixed;
     right: 0;
-
+}
+.avatarSmall{
+    height: 20px;
+}
+.avatar{
+    height: 40px;
+}
+.photo{
+    height: 90px;
+}
+.photoBig{
+    height: 300px;
+}
+.post{
+    min-height: 150px;
 }
