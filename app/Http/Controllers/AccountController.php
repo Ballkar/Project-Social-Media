@@ -53,7 +53,7 @@ class AccountController extends Controller
             return redirect('/profile/' . auth()->id() . "/edit");
         }
 
-        return view('account.edit', compact('user'));
+        return view('account.edit');
     }
 
     public function update(User $user)
@@ -72,6 +72,6 @@ class AccountController extends Controller
         $user->data->edit(request()->except(['__token']));
 
 
-        return view('account.edit', compact('user'));
+        return redirect('/profile/'.auth()->id());
     }
 }

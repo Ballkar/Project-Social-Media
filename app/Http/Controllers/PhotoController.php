@@ -32,12 +32,11 @@ class PhotoController extends Controller
         }
 
 
-        return redirect('/gallery/' . auth()->id() . "");
+        return redirect('/gallery/' . auth()->id());
     }
 
     public function show(Photo $photo)
     {
-
         return view('photo.show', compact('photo'));
     }
 
