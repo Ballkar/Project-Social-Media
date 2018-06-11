@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Photo;
-use App\User;
 
 class PhotoController extends Controller
 {
@@ -12,10 +11,7 @@ class PhotoController extends Controller
         $this->middleware('auth');
     }
 
-    public function show(Photo $photo)
-    {
-        return view('photo.show', compact('photo'));
-    }
+
 
     public function create()
     {
@@ -26,11 +22,24 @@ class PhotoController extends Controller
     {
 
         $this->validate(request(), [
-            "photo" => "image"
+            "photo" => "image|required"
         ]);
 
-        auth()->user()->gallery->AddPhoto(request());
+        if (request('avatar')=='on'){
+            auth()->user()->gallery->AddAndChangeAvatar(request());
+        }else{
+            auth()->user()->gallery->AddPhoto(request());
+        }
+
 
         return redirect('/gallery/' . auth()->id() . "");
     }
+
+    public function show(Photo $photo)
+    {
+
+        return view('photo.show', compact('photo'));
+    }
+
+
 }

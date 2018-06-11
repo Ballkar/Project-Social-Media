@@ -10,6 +10,11 @@
                 <a href="/profile/{{$user->id}}/edit" class="btn-primary btn mr-1">Edytuj Profil</a>
                 <a href="/gallery/{{$user->id}}" class="btn-primary btn">Galeria</a>
             </div>
+        @else
+            <div class="btn-group h-25 ml-auto">
+                <a href="#" class="btn-primary btn mr-1">Dodaj do znajomych</a>
+                <a href="/gallery/{{$user->id}}" class="btn-primary btn">Galeria</a>
+            </div>
         @endif
     </div>
 

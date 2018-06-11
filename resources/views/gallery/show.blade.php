@@ -7,7 +7,7 @@
         <div class="border-bottom mx-0 px-0">
             <h2 class="p-2">Podziel sie zdjeciami w swojej galerii!!</h2>
         </div>
-        @if($user->id == auth()->user()->id)
+        @if($gallery->id == auth()->user()->id)
             <div class="h-25 ml-auto">
                 <a href="/photo/create" class="btn-primary btn">Dodaj zdjęcie</a>
             </div>

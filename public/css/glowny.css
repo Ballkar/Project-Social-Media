@@ -40,6 +40,9 @@ html {
 .photo{
     height: 90px;
 }
+.photoBig{
+    height: 300px;
+}
 .post{
     min-height: 150px;
 }

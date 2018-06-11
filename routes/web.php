@@ -32,7 +32,8 @@ Route::post('/profile/{user}/edit', 'AccountController@update');
 
 
 
-Route::get('/gallery/{user}', 'GalleryController@show');
+Route::get('/gallery/{gallery}', 'GalleryController@show');
+
 
 
 Route::get('/photo/create', 'PhotoController@create');
@@ -40,6 +41,10 @@ Route::get('/photo/create', 'PhotoController@create');
 Route::post('/photo/create', 'PhotoController@store');
 
 Route::get('/photo/{photo}', 'PhotoController@show');
+
+
+
+Route::get('/avatar/{photo}', 'AvatarController@edit');
 
 
 

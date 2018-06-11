@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Gallery;
 use App\Photo;
 use App\User;
 
@@ -15,13 +16,13 @@ class GalleryController extends Controller
         $this->middleware('auth');
     }
 
-    public function show(User $user)
+    public function show(Gallery $gallery)
     {
         $photos = Photo::latest()
-            ->where('gallery_id',$user->gallery->id)
+            ->where('gallery_id',$gallery->id)
             ->get();
 
-        return view('gallery.show', compact('user','photos'));
+        return view('gallery.show', compact('gallery','photos'));
     }
 
 }
