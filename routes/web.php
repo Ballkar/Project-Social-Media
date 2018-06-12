@@ -89,6 +89,12 @@ Route::post('/photo/create', 'PhotoController@store');
 
 Route::get('/photo/{photo}', 'PhotoController@show');
 
+Route::get('/photo/{photo}/edit', 'PhotoController@edit');
+
+Route::post('/photo/{photo}/edit', 'PhotoController@update');
+
+Route::get('/photo/{photo}/delete', 'PhotoController@destroy');
+
 
 
 /*
