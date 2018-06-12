@@ -40,10 +40,16 @@ class AccountController extends Controller
     public function show(User $user)
     {
         $posts = Post::latest()
-        ->where('table_id',$user->table->id)
-        ->get();
+            ->where('table_id', $user->table->id)
+            ->get();
 
-        return view('account.show', compact('user','posts'));
+        foreach ($posts as $post) {
+            if (strlen($post->body) > 120) {
+                $post->body = substr($post->body, 0, 120) . "...";
+            }
+        }
+
+        return view('account.show', compact('user', 'posts'));
     }
 
 
@@ -64,7 +70,7 @@ class AccountController extends Controller
         }
 
         $this->validate(request(), [
-            "adres"=>"sometimes|nullable|alpha_num",
+            "adres" => "sometimes|nullable|alpha_num",
             "birthday" => "sometimes|nullable|date"
         ]);
 
@@ -72,6 +78,6 @@ class AccountController extends Controller
         $user->data->edit(request()->except(['__token']));
 
 
-        return redirect('/profile/'.auth()->id());
+        return redirect('/profile/' . auth()->id());
     }
 }

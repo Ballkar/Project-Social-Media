@@ -17,7 +17,7 @@
         </div>
         <div class="col-5 bg-light m-0">
             <div class="row m-2 border-bottom">
-                <img src="{{asset($photo->user->gallery->avatar)}}" class="rounded-circle avatar img-fluid">
+                <img src="{{asset($photo->gallery->avatar)}}" class="rounded-circle avatar img-fluid">
                 <h4 class="m-2 mt-auto">{{$photo->user->data->name." ".$photo->user->data->surname}}</h4>
             </div>
             <div class="col-12 text-center pt-2">

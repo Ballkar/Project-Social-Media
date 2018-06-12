@@ -18,7 +18,7 @@ class Table extends Model
         return $this->HasMany(Post::class);
     }
 
-    public static function AddPost(Request $request)
+    public function AddPost(Request $request)
     {
         Post::create([
             'user_id'=>auth()->id(),

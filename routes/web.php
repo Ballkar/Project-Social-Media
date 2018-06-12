@@ -13,17 +13,6 @@
 
 Route::get('/', 'GuestController@index')->name('home');
 
-
-/*
- *  Tablica
- *     |
- *     V
- */
-Route::get('/table', 'TableController@index');
-
-Route::post('/table/{user}', 'TableController@store');
-
-
 /*
  *  Rejestracja
  *     |
@@ -44,6 +33,29 @@ Route::post('/login', 'SessionController@store');
 
 Route::get('/logout', 'SessionController@destroy');
 
+
+/*
+ *  Tablica
+ *     |
+ *     V
+ */
+Route::get('/table', 'TableController@index');
+
+
+/*
+ *  Posty
+ *     |
+ *     V
+ */
+Route::post('/post/{user}', 'PostController@store');
+
+Route::get('/post/{post}', 'PostController@show');
+
+Route::get('/post/{post}/edit', 'PostController@edit');
+
+Route::post('/post/{post}/edit', 'PostController@update');
+
+Route::get('/post/{post}/delete', 'PostController@delete');
 
 /*
  *  Profil

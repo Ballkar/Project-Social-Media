@@ -20,7 +20,7 @@
 
 
     <div class="col-12 pt-2">
-        <form class="form-inline" action='/table/{{$user->id}}' method="post">
+        <form class="form-inline" action='/post/{{$user->id}}' method="post">
             {{csrf_field()}}
             <textarea type="text" class="form-control w-75 mr-2" rows="3" id="body" name="body"
                       placeholder="Napisz swój Post"></textarea>
