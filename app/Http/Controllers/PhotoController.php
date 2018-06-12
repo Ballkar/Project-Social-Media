@@ -9,6 +9,7 @@ class PhotoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('UserID')->only('edit','destroy');
     }
 
 

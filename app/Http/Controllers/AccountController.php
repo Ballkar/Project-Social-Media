@@ -12,6 +12,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['create', 'store']);
+        $this->middleware('UserID')->only('edit','update');
     }
 
 
@@ -55,9 +56,6 @@ class AccountController extends Controller
 
     public function edit(User $user)
     {
-        if ($user->id != auth()->id()) {
-            return redirect('/profile/' . auth()->id() . "/edit");
-        }
 
         return view('account.edit');
     }
@@ -65,9 +63,6 @@ class AccountController extends Controller
     public function update(User $user)
     {
 
-        if ($user->id != auth()->id()) {
-            return redirect('/profile/' . auth()->id() . "/edit");
-        }
 
         $this->validate(request(), [
             "adres" => "sometimes|nullable|alpha_num",

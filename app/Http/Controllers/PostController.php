@@ -10,6 +10,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('UserID')->only('edit','update','destroy');
     }
 
     public function store(User $user)
@@ -35,9 +36,6 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
-        if ($post->user->id != auth()->id()) {
-            return redirect('/profile/' . auth()->id() . "/edit");
-        }
         $this->validate(request(), [
             "body" => "min:3"
         ]);
@@ -47,12 +45,8 @@ class PostController extends Controller
 
         return redirect("/post/".$post->id);
     }
-    public function delete(Post $post)
+    public function destroy(Post $post)
     {
-        if ($post->user->id != auth()->id()) {
-            return redirect('/profile/' . auth()->id() . "/edit");
-        }
-
         $post->delete();
 
         return redirect("/");

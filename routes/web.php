@@ -55,7 +55,7 @@ Route::get('/post/{post}/edit', 'PostController@edit');
 
 Route::post('/post/{post}/edit', 'PostController@update');
 
-Route::get('/post/{post}/delete', 'PostController@delete');
+Route::get('/post/{post}/delete', 'PostController@destroy');
 
 /*
  *  Profil
