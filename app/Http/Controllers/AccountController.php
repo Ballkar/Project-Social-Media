@@ -12,6 +12,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['create', 'store']);
+        $this->middleware('UserID')->only('edit','update');
     }
 
 
@@ -40,18 +41,21 @@ class AccountController extends Controller
     public function show(User $user)
     {
         $posts = Post::latest()
-        ->where('table_id',$user->table->id)
-        ->get();
+            ->where('table_id', $user->table->id)
+            ->get();
 
-        return view('account.show', compact('user','posts'));
+        foreach ($posts as $post) {
+            if (strlen($post->body) > 120) {
+                $post->body = substr($post->body, 0, 120) . "...";
+            }
+        }
+
+        return view('account.show', compact('user', 'posts'));
     }
 
 
     public function edit(User $user)
     {
-        if ($user->id != auth()->id()) {
-            return redirect('/profile/' . auth()->id() . "/edit");
-        }
 
         return view('account.edit');
     }
@@ -59,12 +63,9 @@ class AccountController extends Controller
     public function update(User $user)
     {
 
-        if ($user->id != auth()->id()) {
-            return redirect('/profile/' . auth()->id() . "/edit");
-        }
 
         $this->validate(request(), [
-            "adres"=>"sometimes|nullable|alpha_num",
+            "adres" => "sometimes|nullable|alpha_num",
             "birthday" => "sometimes|nullable|date"
         ]);
 
@@ -72,6 +73,6 @@ class AccountController extends Controller
         $user->data->edit(request()->except(['__token']));
 
 
-        return redirect('/profile/'.auth()->id());
+        return redirect('/profile/' . auth()->id());
     }
 }

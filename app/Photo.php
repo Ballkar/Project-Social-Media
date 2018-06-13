@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
     //
-    protected $guarded=[];
+    protected $guarded = [];
 
     public function gallery()
     {
         return $this->belongsTo(Gallery::class);
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -23,4 +24,12 @@ class Photo extends Model
         return $this->belongsTo(Post::class);
     }
 
+    public function comment($body)
+    {
+        comment::create([
+            'user_id' => auth()->id(),
+            'photo_id' => $this->id,
+            'body' => $body
+        ]);
+    }
 }

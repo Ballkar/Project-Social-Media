@@ -13,17 +13,6 @@
 
 Route::get('/', 'GuestController@index')->name('home');
 
-
-/*
- *  Tablica
- *     |
- *     V
- */
-Route::get('/table', 'TableController@index');
-
-Route::post('/table/{user}', 'TableController@store');
-
-
 /*
  *  Rejestracja
  *     |
@@ -44,6 +33,29 @@ Route::post('/login', 'SessionController@store');
 
 Route::get('/logout', 'SessionController@destroy');
 
+
+/*
+ *  Tablica
+ *     |
+ *     V
+ */
+Route::get('/table', 'TableController@index');
+
+
+/*
+ *  Posty
+ *     |
+ *     V
+ */
+Route::post('/post/{user}', 'PostController@store');
+
+Route::get('/post/{post}', 'PostController@show');
+
+Route::get('/post/{post}/edit', 'PostController@edit');
+
+Route::post('/post/{post}/edit', 'PostController@update');
+
+Route::get('/post/{post}/delete', 'PostController@destroy');
 
 /*
  *  Profil
@@ -77,6 +89,12 @@ Route::post('/photo/create', 'PhotoController@store');
 
 Route::get('/photo/{photo}', 'PhotoController@show');
 
+Route::get('/photo/{photo}/edit', 'PhotoController@edit');
+
+Route::post('/photo/{photo}/edit', 'PhotoController@update');
+
+Route::get('/photo/{photo}/delete', 'PhotoController@destroy');
+
 
 
 /*
@@ -85,6 +103,22 @@ Route::get('/photo/{photo}', 'PhotoController@show');
  *        V
  */
 Route::get('/avatar/{photo}', 'AvatarController@edit');
+/*
+ *    Komentarze podzielone na obsługę komentarzy do postów i zdjęć
+ *        |
+ *        V
+ */
+Route::post('/post/{post}/comment', 'CommentController@PostStore');
+
+Route::post('/photo/{photo}/comment', 'CommentController@PhotoStore');
+
+
+Route::get('/comment/{comment}/edit', 'CommentController@edit');
+
+Route::post('/comment/{comment}/edit', 'CommentController@update');
+
+Route::get('/comment/{comment}/delete', 'CommentController@destroy');
+
 
 
 
