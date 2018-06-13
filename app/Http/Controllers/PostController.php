@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\comment;
 use App\Post;
 use App\User;
 
@@ -31,7 +32,12 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $user = $post->user;
-        return view('post.show',compact('post','user'));
+        $id = $post->id;
+        $comments = comment::where('post_id','=',$id)
+            ->get();
+
+
+        return view('post.show',compact('post','user','id', 'comments'));
     }
 
     public function update(Post $post)
@@ -51,4 +57,5 @@ class PostController extends Controller
 
         return redirect("/");
     }
+
 }

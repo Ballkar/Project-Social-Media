@@ -15,11 +15,10 @@
 
             <hr>
 
-
-            <div class="row m-0 p-0">
-                    <div class="col-12 m-0 p-0 text-center">
-                        <span class="h3 font-weight-light mx-5">{{$post->body}}</span>
-                    </div>
+            <div class="col-12 m-0 p-0 text-center">
+                <span class="h3 font-weight-light mx-5">{{$post->body}}</span>
+            </div>
+            <div class="mt-2">
                 <a href="/post/{{$post->id}}" class=" mx-1">Zobacz post</a>
                 @if($post->user->id == auth()->user()->id)
                     <a href="/post/{{$post->id}}/edit" class=" mx-1">Edytuj</a>

@@ -12,21 +12,24 @@
 
 
 @section('content')
-    <div></div>
-    <div class="row mx-3 ">
-        <div class="m-0">
+
+    <div class="col-12">
+        <div class="row m-2 border-bottom">
+            <img src="{{asset($photo->gallery->avatar)}}" class="rounded-circle avatar img-fluid">
+            <h4 class="m-2 mt-auto">{{$photo->user->data->name." ".$photo->user->data->surname}}</h4>
+        </div>
+        <div class="col-12 text-center pt-2 bg-light">
+            {{$photo->body}}
+        </div>
+        <div class="col-12 text-center pt-2">
             <img src="{{asset($photo->path)}}" class="photoBig ">
         </div>
-        <div class="col-lg-12 col-xl-5 bg-light m-0 ml-auto">
-            <div class="row m-2 border-bottom">
-                <img src="{{asset($photo->gallery->avatar)}}" class="rounded-circle avatar img-fluid">
-                <h4 class="m-2 mt-auto">{{$photo->user->data->name." ".$photo->user->data->surname}}</h4>
-            </div>
-            <div class="col-12 text-center pt-2">
-                {{$photo->body}}
-            </div>
-        </div>
+
     </div>
+
+    @include('layouts.part.comment')
+
+
 
 
 

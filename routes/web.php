@@ -103,6 +103,22 @@ Route::get('/photo/{photo}/delete', 'PhotoController@destroy');
  *        V
  */
 Route::get('/avatar/{photo}', 'AvatarController@edit');
+/*
+ *    Komentarze podzielone na obsługę komentarzy do postów i zdjęć
+ *        |
+ *        V
+ */
+Route::post('/post/{post}/comment', 'CommentController@PostStore');
+
+Route::post('/photo/{photo}/comment', 'CommentController@PhotoStore');
+
+
+Route::get('/comment/{comment}/edit', 'CommentController@edit');
+
+Route::post('/comment/{comment}/edit', 'CommentController@update');
+
+Route::get('/comment/{comment}/delete', 'CommentController@destroy');
+
 
 
 

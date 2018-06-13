@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\comment;
 use App\Photo;
-use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -39,7 +39,11 @@ class PhotoController extends Controller
 
     public function show(Photo $photo)
     {
-        return view('photo.show', compact('photo'));
+        $id = $photo->id;
+        $comments = comment::where('photo_id','=',$id)
+            ->get();
+
+        return view('photo.show', compact('photo','id','comments'));
     }
     public function edit(Photo $photo)
     {
@@ -71,6 +75,8 @@ class PhotoController extends Controller
         $photo->delete();
         return redirect('/');
     }
+
+
 
 
 }
