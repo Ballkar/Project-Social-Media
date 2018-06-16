@@ -120,5 +120,12 @@ Route::post('/comment/{comment}/edit', 'CommentController@update');
 Route::get('/comment/{comment}/delete', 'CommentController@destroy');
 
 
+/*
+ *    Znajomi
+ *        |
+ *        V
+ */
 
+Route::get('{user}/friend/make', 'FriendshipController@store');
 
+Route::get('{user}/friend', 'FriendshipController@index');

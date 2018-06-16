@@ -12,7 +12,13 @@
             </div>
         @else
             <div class="btn-group h-25 ml-auto">
-                <a href="#" class="btn-primary btn mr-1">Dodaj do znajomych</a>
+                @if($friend)
+                <a href="/{{$user->id}}/friend/make" class="btn-primary btn mr-1">Napisz Wiadomość</a>
+                @elseif($asked)
+                    <a href="/{{$user->id}}/friend/make" class="btn-primary btn mr-1">Potwierdź znajomość</a>
+                @else
+                    <a href="/{{$user->id}}/friend/make" class="btn-primary btn mr-1">Dodaj do znajomych</a>
+                @endif
                 <a href="/gallery/{{$user->id}}" class="btn-primary btn">Galeria</a>
             </div>
         @endif
