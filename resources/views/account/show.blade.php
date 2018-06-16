@@ -13,7 +13,7 @@
         @else
             <div class="btn-group h-25 ml-auto">
                 @if($friend)
-                <a href="/massage/{{$user->id}}/create" class="btn-primary btn mr-1">Napisz Wiadomość</a>
+                    <a href="/massage/{{$user->id}}/create" class="btn-primary btn mr-1">Napisz Wiadomość</a>
                 @elseif($asked)
                     <a href="/friend/{{$user->id}}/store" class="btn-primary btn mr-1">Potwierdź znajomość</a>
                 @elseif($noConnections)
@@ -24,7 +24,6 @@
         @endif
     </div>
 
-
     <div class="col-12 pt-2">
         <form class="form-inline" action='/post/{{$user->id}}' method="post">
             {{csrf_field()}}
@@ -33,6 +32,8 @@
             <button type="submit" class="btn btn-primary mr-2">Dodaj</button>
         </form>
     </div>
+
+
     <hr>
 
     @include('layouts.part.post')
