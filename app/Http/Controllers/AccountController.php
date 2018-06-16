@@ -52,9 +52,9 @@ class AccountController extends Controller
         }
 
         $friend = $user->isFriendWith(auth()->user());
-        $asked = $user->isConnectedWith(auth()->user());
-
-        return view('account.show', compact('user', 'posts', 'friend', 'asked'));
+        $asked = auth()->user()->isInvitedBy($user);
+        $noConnections = !$user->isConnectedWith(auth()->user());
+        return view('account.show', compact('user', 'posts', 'friend', 'asked', 'noConnections'));
     }
 
 

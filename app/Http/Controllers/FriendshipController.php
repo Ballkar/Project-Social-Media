@@ -10,20 +10,39 @@ class FriendshipController extends Controller
 {
     public function index(User $user)
     {
-        //return $user->isFriendWith(auth()->user());
         $invitations = $user->returnInvitationsToMe();
         $myInvitations = $user->returnMyInvitations();
         $friends = $user->returnMyFriends();
 
-        return view('friendship.index',compact('invitations','myInvitations','friends'));
+        return view('friendship.index', compact('invitations', 'myInvitations', 'friends'));
     }
+
 
     public function store(User $user)
     {
-        if (!$user->haveInvitationFrom(auth()->user())){
-            auth()->user()->friend_1()->attach($user->id);
-       }
+        if (!$user->isConnectedWith(auth()->user())) {
+            auth()->user()->invite($user);
+        } elseif ($user->isConnectedWith(auth()->user())) {
+            auth()->user()->acceptInvitation($user);
+        }
 
-    return redirect('/profile/'.$user->id)->with(compact('user'));
+        return back();
+    }
+
+
+    public function destroy(User $user)
+    {
+
+        if (auth()->user()->isInvitedBy($user)) {
+            $user->deleteInvitation(auth()->user());
+        } elseif ($user->isInvitedBy(auth()->user())) {
+            auth()->user()->deleteInvitation($user);
+        } elseif
+        ($user->isFriendWith(auth()->user())) {
+            auth()->user()->deleteFriendship($user);
+        }
+
+
+        return back();
     }
 }

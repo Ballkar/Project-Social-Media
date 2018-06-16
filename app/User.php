@@ -94,6 +94,21 @@ class User extends Authenticatable
     {
         $this->friend_1()->attach($user->id);
     }
+    public function deleteInvitation($user)
+    {
+        $this->friend_1()->detach($user->id);
+    }
+
+    public function acceptInvitation($user)
+    {
+        $friendship = $this->returnConnectionWith($user)->first();
+        $friendship->pivot->status=1;
+        $friendship->pivot->save();
+    }
+    public function deleteFriendship($user)
+    {
+        $this->returnConnectionWith($user)->detach($user);
+    }
 
     public function friend_1()
     {
@@ -138,6 +153,25 @@ class User extends Authenticatable
     public function returnMyFriends()
     {
         return $this->friend_1->merge($this->friend_2)->where('pivot.status', 1)->all();
+    }
+
+    public function returnConnectionWith($user)
+    {
+        if (!is_null($this->friend_1()->With2($user)->first())) {
+            return $this->friend_1()->With2($user);
+        } elseif (!is_null($this->friend_2()->With1($user)->first())) {
+            return $this->friend_2()->With1($user);
+        } else {
+            return false;
+        }
+    }
+    public function isInvitedBy($user)
+    {
+        if (!is_null($this->friend_2()->With1($user)->first())) {
+            return true;
+        }  else {
+            return false;
+        }
     }
 
 //      check if users have connection in database

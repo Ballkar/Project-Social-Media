@@ -13,7 +13,7 @@
         <nav class="my-2 my-md-0 mr-md-3">
             <div class="btn-group">
                 <a class="p-2 text-dark" href="/profile/{{auth()->id()}}">@include('layouts.part.UserAvatarSmall') O Mnie</a>
-                <a class="p-2 text-dark" href="/{{auth()->id()}}/friend">Znajomi</a>
+                <a class="p-2 text-dark" href="/friend/{{auth()->id()}}">Znajomi</a>
                 <a class="p-2 text-dark" href="#">Grupy</a>
                 <a class="p-2 text-dark" href="#">Wiadomości</a>
                 <a class="p-2 text-dark" href="#">Powiadomienia</a>

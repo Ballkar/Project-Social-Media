@@ -126,6 +126,8 @@ Route::get('/comment/{comment}/delete', 'CommentController@destroy');
  *        V
  */
 
-Route::get('{user}/friend/make', 'FriendshipController@store');
+Route::get('/friend/{user}', 'FriendshipController@index');
 
-Route::get('{user}/friend', 'FriendshipController@index');
+Route::get('/friend/{user}/store', 'FriendshipController@store');
+
+Route::get('/friend/{user}/destroy', 'FriendshipController@destroy');
