@@ -125,9 +125,16 @@ Route::get('/comment/{comment}/delete', 'CommentController@destroy');
  *        |
  *        V
  */
-
 Route::get('/friend/{user}', 'FriendshipController@index');
 
 Route::get('/friend/{user}/store', 'FriendshipController@store');
 
 Route::get('/friend/{user}/destroy', 'FriendshipController@destroy');
+
+
+/*
+ *    wyszukiwarka
+ *        |
+ *        V
+ */
+Route::get('/search', 'SearchController@index');
