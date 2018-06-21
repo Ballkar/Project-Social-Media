@@ -17,10 +17,11 @@
 </head>
 
 <body>
-
-@include('layouts.nav')
-
-
+@if(auth()->check())
+    @include('layouts.nav')
+@elseif(!auth()->check())
+    @include('layouts.nav-guest')
+@endif
 <div class="container-fluid">
     @include('layouts.container')
 </div>

@@ -120,5 +120,35 @@ Route::post('/comment/{comment}/edit', 'CommentController@update');
 Route::get('/comment/{comment}/delete', 'CommentController@destroy');
 
 
+/*
+ *    Znajomi
+ *        |
+ *        V
+ */
+Route::get('/friend/{user}', 'FriendshipController@index');
+
+Route::get('/friend/{user}/store', 'FriendshipController@store');
+
+Route::get('/friend/{user}/destroy', 'FriendshipController@destroy');
 
 
+/*
+ *    wyszukiwarka
+ *        |
+ *        V
+ */
+Route::get('/search', 'SearchController@index');
+
+
+/*
+ *    Wiadmości
+ *        |
+ *        V
+ */
+Route::get('/conversation', 'ConversationController@index');
+
+Route::get('/conversation/{user}', 'ConversationController@store');
+
+Route::get('/conversation/{conversation}/message', 'ConversationController@show');
+
+Route::post('/conversation/{conversation}/message', 'MessageController@store');

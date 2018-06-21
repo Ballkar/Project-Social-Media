@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Friendship;
 use App\Post;
 use App\UserData;
 use App\User;
@@ -12,7 +13,7 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['create', 'store']);
-        $this->middleware('UserID')->only('edit','update');
+        $this->middleware('UserID')->only('edit', 'update');
     }
 
 
@@ -50,7 +51,10 @@ class AccountController extends Controller
             }
         }
 
-        return view('account.show', compact('user', 'posts'));
+        $friend = $user->isFriendWith(auth()->user());
+        $asked = auth()->user()->isInvitedBy($user);
+        $noConnections = !$user->isConnectedWith(auth()->user());
+        return view('account.show', compact('user', 'posts', 'friend', 'asked', 'noConnections'));
     }
 
 
