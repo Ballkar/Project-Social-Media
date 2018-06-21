@@ -138,3 +138,17 @@ Route::get('/friend/{user}/destroy', 'FriendshipController@destroy');
  *        V
  */
 Route::get('/search', 'SearchController@index');
+
+
+/*
+ *    Wiadmości
+ *        |
+ *        V
+ */
+Route::get('/conversation', 'ConversationController@index');
+
+Route::get('/conversation/{user}', 'ConversationController@store');
+
+Route::get('/conversation/{conversation}/message', 'ConversationController@show');
+
+Route::post('/conversation/{conversation}/message', 'MessageController@store');

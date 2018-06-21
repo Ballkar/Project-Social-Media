@@ -13,7 +13,7 @@
         @else
             <div class="btn-group h-25 ml-auto">
                 @if($friend)
-                    <a href="/massage/{{$user->id}}/create" class="btn-primary btn mr-1">Napisz Wiadomość</a>
+                    <a href="/conversation/{{$user->id}}" class="btn-primary btn mr-1">Napisz Wiadomość</a>
                 @elseif($asked)
                     <a href="/friend/{{$user->id}}/store" class="btn-primary btn mr-1">Potwierdź znajomość</a>
                 @elseif($noConnections)

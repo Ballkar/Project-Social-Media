@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+use App\Conversation;
 
 class User extends Authenticatable
 {
@@ -88,8 +89,6 @@ class User extends Authenticatable
      *        |
      *        V
      */
-
-
     public function invite($user)
     {
         $this->friend_1()->attach($user->id);
@@ -205,5 +204,49 @@ class User extends Authenticatable
         }
     }
 
+    /*
+     *    wiadomości
+     *        |
+     *        V
+     */
+    public function conversation_1()
+    {
+        return $this->belongsToMany(User::class, 'Conversations', 'user_id_1', 'user_id_2')->withPivot('id');
+    }
 
+    public function conversation_2()
+    {
+        return $this->belongsToMany(User::class, 'Conversations', 'user_id_2', 'user_id_1')->withPivot('id');
+    }
+
+    public function returnConversations()
+    {
+        return $this->conversation_1->merge($this->conversation_2)->all();
+    }
+    public function returnConversationWith($user)
+    {
+        if (!is_null($this->conversation_1()->With2($user)->first())) {
+            return $this->conversation_1()->With2($user);
+        } elseif (!is_null($this->conversation_2()->With1($user)->first())) {
+            return $this->conversation_2()->With1($user);
+        } else {
+            return false;
+        }
+    }
+
+    public function haveConversationWith($user)
+    {
+        if (!is_null($this->conversation_1()->With2($user)->first())) {
+            return true;
+        } elseif (!is_null($this->conversation_2()->With1($user)->first())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

@@ -18,7 +18,7 @@
                 <a class="p-2 text-dark" href="/friend/{{auth()->id()}}">Znajomi</a>
             @endif
             <a class="p-2 text-dark" href="#">Grupy</a>
-            <a class="p-2 text-dark" href="#">Wiadomości</a>
+            <a class="p-2 text-dark" href="/conversation">Wiadomości</a>
             <a class="p-2 text-dark" href="#">Powiadomienia</a>
         </div>
     </nav>
