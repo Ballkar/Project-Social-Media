@@ -36,8 +36,8 @@ Project modeled on modern Facebook / Twitter portals.
 
 ### Author
 Łatka Arkadiusz 
-arkadiusz.latka@o2.pl
-https://www.linkedin.com/in/arkadiusz-%C5%82atka-873560164/
+ - arkadiusz.latka@o2.pl
+ - https://www.linkedin.com/in/arkadiusz-%C5%82atka-873560164/
 
 
 ### Todos
