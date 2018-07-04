@@ -1,7 +1,7 @@
 # Project-Social-Media
 
 
-Project modeled on modern portals like Facebook / Twitter.
+Project of modern Social media site like Facebook / Twitter.
 
 ## Motvation
 
