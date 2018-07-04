@@ -5,7 +5,7 @@ Project modeled on modern portals like Facebook / Twitter.
 
 ## Motvation
 
-  - I created this project to check knowleage the knowledge gained in Laravel courses in practice
+  - I created this project to check my knowledge gained in Laravel courses in practice
   - I wanted to plan a larger application myself without the help of courses or diffrent person.
 
 ## Technologies
