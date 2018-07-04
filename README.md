@@ -5,8 +5,8 @@ Project modeled on modern portals like Facebook / Twitter.
 
 ## Motvation
 
-  - I created this project to apply the knowledge gained in Laravel courses in practice
-  - I wanted to try to plan a larger application myself without the help of courses or diffrent person.
+  - I created this project to check knowleage the knowledge gained in Laravel courses in practice
+  - I wanted to plan a larger application myself without the help of courses or diffrent person.
 
 ## Technologies
 
@@ -22,9 +22,9 @@ Project modeled on modern portals like Facebook / Twitter.
  ```sh
     composer global require "laravel/installer=~1.1"
 ```
- - Start Apache server and MySQL.
- - Use next commands in downloaded folder
- - Run the database migrations (Set the database connection in .env before migrating)
+ - Start local Apache server and MySQL.
+ - Use next commands in downloaded folder:
+ - Run the database migrations (Set the database connection in .env file before migrating(dbname/password/username))
  ```sh
     php artisan migrate
 ```
