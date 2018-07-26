@@ -18,7 +18,15 @@ Project of modern Social media site like Facebook / Twitter.
  - PHP >= 7.1.3
 ## Setup
 
- -  First, download the Laravel installer using Composer:
+ - Download files and use this command in downloaded folder
+ ```sh
+    composer install
+```
+ ```sh
+    composer dump-autoload
+```
+
+ -  Download the Laravel using Composer:
  ```sh
     composer global require "laravel/installer=~1.1"
 ```
