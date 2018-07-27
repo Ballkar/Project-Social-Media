@@ -31,8 +31,14 @@ Project of modern Social media site like Facebook / Twitter.
     composer global require "laravel/installer=~1.1"
 ```
  - Start local Apache server and MySQL.
+ 
+ - Create new file ".env" and copy the content from ".enc.example" just edit dbname/password/username.
+ 
  - Use next commands in downloaded folder:
- - Run the database migrations (Set the database connection in .env file before migrating(dbname/password/username))
+  ```sh
+    php artisan key:generate
+```
+ - Run the database migrations.
  ```sh
     php artisan migrate
 ```
